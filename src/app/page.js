@@ -4,10 +4,18 @@ import CustomSlider from "./components/CustomSlider";
 import { Box, Typography, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import Image from "next/image";
+import image1 from "../../public/images/coffee1.jpg";
+import image2 from "../../public/images/cherries-chocolate-cake-food.jpg";
 
 export default function Home() {
   // const [coffees, setCoffees] = useState([]);
   const [showCoffees, setShowCoffees] = useState([]);
+  const images = [image1, image2];
+  // const images = [
+  //   "https://fastly.picsum.photos/id/12/2500/1667.jpg?hmac=Pe3284luVre9ZqNzv1jMFpLihFI6lwq7TPgMSsNXw2w",
+  //   "https://fastly.picsum.photos/id/13/2500/1667.jpg?hmac=SoX9UoHhN8HyklRA4A3vcCWJMVtiBXUg0W4ljWTor7s",
+  //   "https://fastly.picsum.photos/id/14/2500/1667.jpg?hmac=ssQyTcZRRumHXVbQAVlXTx-MGBxm6NHWD3SryQ48G-o",
+  // ];
   const getCoffee = async () => {
     try {
       const resp = await fetch("https://api.sampleapis.com/coffee/hot");
@@ -38,11 +46,6 @@ export default function Home() {
     getCoffee();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  const images = [
-    "https://fastly.picsum.photos/id/12/2500/1667.jpg?hmac=Pe3284luVre9ZqNzv1jMFpLihFI6lwq7TPgMSsNXw2w",
-    "https://fastly.picsum.photos/id/13/2500/1667.jpg?hmac=SoX9UoHhN8HyklRA4A3vcCWJMVtiBXUg0W4ljWTor7s",
-    "https://fastly.picsum.photos/id/14/2500/1667.jpg?hmac=ssQyTcZRRumHXVbQAVlXTx-MGBxm6NHWD3SryQ48G-o",
-  ];
   return (
     <Box>
       <CustomSlider images={images} />
