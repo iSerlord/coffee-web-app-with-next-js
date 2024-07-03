@@ -1,47 +1,31 @@
 "use client";
-import { useState, useEffect } from "react";
+// import { useEffect, useRef } from "react";
 import { Box, Button, useMediaQuery } from "@mui/material";
 import { styled } from "@mui/system";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
-import { useSwiper } from "swiper/react";
+import {
+  Navigation,
+  Pagination,
+  Scrollbar,
+  A11y,
+  Autoplay,
+} from "swiper/modules";
+// import { useSwiper } from "swiper/react";
 import Image from "next/image";
 import "swiper/css";
 
+
 const CustomSlider = ({ images }) => {
-  const swiper = useSwiper();
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      // nextSlide();
-    }, 7000);
-
-    return () => clearInterval(interval);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [currentIndex]);
-
-  const prevSlide = () => {
-    const isFirstSlide = currentIndex === 0;
-    const newIndex = isFirstSlide ? images.length - 1 : currentIndex - 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const nextSlide = () => {
-    const isLastSlide = currentIndex === images.length - 1;
-    const newIndex = isLastSlide ? 0 : currentIndex + 1;
-    setCurrentIndex(newIndex);
-  };
-
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
-
+  // const matches = useMediaQuery("(min-width: 600px)");
   return (
     <SliderContainer>
       <Swiper
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+        modules={[Navigation, Pagination, Scrollbar, A11y, Autoplay]}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: false,
+        }}
         slidesPerView={1}
         loop={true}
         navigation={{
@@ -49,11 +33,13 @@ const CustomSlider = ({ images }) => {
           prevEl: ".swiper-button-prev",
         }}
         pagination={{
-          el: ".swiper-pagination",
           clickable: true,
+          el: ".swiper-pagination",
           bulletClass: "swiper-pagination-bullet",
           bulletActiveClass: "swiper-pagination-bullet-active",
-          modifierClass: "swiper-pagination-custom",
+          renderBullet: (index, className) => {
+            return `<div class="${className}"></div>`;
+          },
         }}
         onSlideChange={() => console.log("slide change")}
         onSlideNextTransitionEnd={() => console.log("transition next end")}
@@ -81,16 +67,8 @@ const CustomSlider = ({ images }) => {
         <ArrowButton className="swiper-button-next" style={{ right: "15px" }}>
           <ArrowRight />
         </ArrowButton>
-        <DotsContainer>
-          {/* {images.map((_, index) => (
-            <Dot
-              key={index}
-              active={currentIndex === index ? "true" : "false"}
-              onClick={() => goToSlide(index)}
-            />
-          ))} */}
-          <Dot className="swiper-pagination" />
-        </DotsContainer>
+
+        <Dot className="swiper-pagination" />
       </Swiper>
     </SliderContainer>
   );
@@ -138,33 +116,35 @@ const ArrowButton = styled(Button)({
   zIndex: 2,
 });
 
-const DotsContainer = styled(Box)({
-  position: "absolute",
-  bottom: "15px",
-  display: "flex",
-  justifyContent: "center",
-  width: "100%",
-  zIndex: 2,
-});
-
 const Dot = styled(Box)(({ active }) => ({
-  // height: "10px",
-  // width: "10px",
-  // backgroundColor: active === "true" ? "#717171" : "#bbb",
-  // borderRadius: "50%",
-  // margin: "0 5px",
-  // cursor: "pointer",
-  // transition: "background-color 0.3s ease",
-  "&.swiper-pagination-custom .swiper-pagination-bullet": {
-    background: "#000",
-    width: "12px",
-    height: "12px",
-    opacity: "1",
+  "&.swiper-pagination": {
+    position: "absolute",
+    bottom: "15px",
+    width: "100%",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    zIndex: 3,
+    gap: "30px",
   },
-  "&.swiper-pagination-custom .swiper-pagination-bullet-active": {
-    background: "#ff0000",
-    width: "16px",
-    height: "16px",
+  "&.swiper-pagination .swiper-pagination-bullet": {
+    padding: "5px",
+    borderRadius: "50%",
+    width: "2px",
+    height: "2px",
+    textAlign: "center",
+    justifyContent: "center",
+    alignItems: "center",
+    lineHeight: "30px",
+    fontSize: "12px",
+    color: "#000",
+    opacity: 1,
+    backgroundColor: "gray",
+  },
+  "&&.swiper-pagination .swiper-pagination-bullet-active": {
+    background: "#ffffff",
+    width: "10px",
+    height: "10px",
   },
 }));
 
