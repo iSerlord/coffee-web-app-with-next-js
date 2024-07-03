@@ -15,7 +15,6 @@ import {
 import Image from "next/image";
 import "swiper/css";
 
-
 const CustomSlider = ({ images }) => {
   // const matches = useMediaQuery("(min-width: 600px)");
   return (
@@ -62,10 +61,10 @@ const CustomSlider = ({ images }) => {
           );
         })}
         <ArrowButton className="swiper-button-prev" style={{ left: "15px" }}>
-          <ArrowLeft />
+          <ArrowLeft style={{ height: "50px", width: "50px" }} />
         </ArrowButton>
         <ArrowButton className="swiper-button-next" style={{ right: "15px" }}>
-          <ArrowRight />
+          <ArrowRight style={{ height: "50px", width: "50px" }} />
         </ArrowButton>
 
         <Dot className="swiper-pagination" />
@@ -101,13 +100,14 @@ const ArrowButton = styled(Button)({
   top: "50%",
   transform: "translateY(-50%)",
   display: "flex",
+  height: "50px",
+  width: "50px",
   alignItems: "center",
   justifyContent: "center",
   backgroundColor: "transparent",
   color: "#fff",
   border: "2px solid #fff",
   borderRadius: "50%",
-  padding: "0",
   minWidth: "auto",
   cursor: "pointer",
   "&:hover": {
