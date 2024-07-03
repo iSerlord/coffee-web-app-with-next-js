@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <Stack
       direction="row"
-      sx={{ padding: "0 6%", width: "100%", backgroundColor: "#e6e7e8", mt: 4 }}
+      sx={{ padding: "0 6%", backgroundColor: "#e6e7e8", mt: 4 }}
     >
       <Box sx={{ padding: "15px", width: "100%" }}>
         <Typography
