@@ -1,5 +1,9 @@
 module.exports = {
   images: {
-    domains: ["via.placeholder.com", "fastly.picsum.photos"],
+    domains: [
+      "via.placeholder.com",
+      "fastly.picsum.photos",
+      "images.unsplash.com",
+    ],
   },
 };

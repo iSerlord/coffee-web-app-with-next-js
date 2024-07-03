@@ -42,7 +42,6 @@ const CustomSlider = ({ images }) => {
         }}
         onSlideChange={() => console.log("slide change")}
         onSlideNextTransitionEnd={() => console.log("transition next end")}
-        onSwiper={(swiper) => console.log(swiper)}
         style={{ width: "100%", height: "100%" }}
       >
         {images.map((image, index) => {
