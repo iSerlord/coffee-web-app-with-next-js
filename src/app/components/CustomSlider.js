@@ -1,6 +1,5 @@
 "use client";
-// import { useEffect, useRef } from "react";
-import { Box, Button, useMediaQuery } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { styled } from "@mui/system";
 import { ArrowLeft, ArrowRight } from "@mui/icons-material";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -11,12 +10,10 @@ import {
   A11y,
   Autoplay,
 } from "swiper/modules";
-// import { useSwiper } from "swiper/react";
 import Image from "next/image";
 import "swiper/css";
 
 const CustomSlider = ({ images }) => {
-  // const matches = useMediaQuery("(min-width: 600px)");
   return (
     <SliderContainer>
       <Swiper

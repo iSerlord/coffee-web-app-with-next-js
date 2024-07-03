@@ -1,12 +1,12 @@
 "use client";
 import { useEffect, useState } from "react";
 import CustomSlider from "./components/CustomSlider";
-import { Box, Typography, Container, Grid } from "@mui/material";
+import { Box, Typography, Grid } from "@mui/material";
 import { styled } from "@mui/system";
 import Image from "next/image";
 
 export default function Home() {
-  const [coffees, setCoffees] = useState([]);
+  // const [coffees, setCoffees] = useState([]);
   const [showCoffees, setShowCoffees] = useState([]);
   const getCoffee = async () => {
     try {
@@ -14,9 +14,9 @@ export default function Home() {
       const json = await resp.json();
       console.log("[Debug] coffee : ", json);
       randomCoffees(json, 5);
-      setCoffees(json);
+      // setCoffees(json);
     } catch (err) {
-      setCoffees(err.message);
+      console.log("[Error] : ", err);
     }
   };
 
@@ -108,4 +108,8 @@ const MainShow = styled(Box)({
 const MenuShow = styled(Box)({
   width: "100%",
   height: "100%",
+});
+
+const Container = styled(Box)({
+  padding: "0 6%",
 });
