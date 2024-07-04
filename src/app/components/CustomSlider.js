@@ -37,8 +37,8 @@ const CustomSlider = ({ images }) => {
             return `<div class="${className}"></div>`;
           },
         }}
-        onSlideChange={() => console.log("slide change")}
-        onSlideNextTransitionEnd={() => console.log("transition next end")}
+        // onSlideChange={() => console.log("slide change")}
+        // onSlideNextTransitionEnd={() => console.log("transition next end")}
         style={{ width: "100%", height: "100%" }}
       >
         {images.map((image, index) => {
@@ -51,6 +51,7 @@ const CustomSlider = ({ images }) => {
                   width={2000}
                   height={2000}
                   style={{ width: "100%", height: "100%" }}
+                  priority
                 />
               </Slide>
             </SwiperSlide>
