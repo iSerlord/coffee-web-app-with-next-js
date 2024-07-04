@@ -39,7 +39,7 @@ const NavBar = () => {
   };
 
   return (
-    <NavBarContainer position="static">
+    <NavBarContainer position="sticky">
       <CustomToolbar>
         <CustomBox>
           <Typography variant="h6" component="div" sx={{ mr: 2 }}>
