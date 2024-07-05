@@ -25,8 +25,13 @@ export default function Home() {
   const getCoffee = async () => {
     console.log(123);
     try {
-      const resp = await fetch("https://api.sampleapis.com/coffee/hot");
+      const startTime = performance.now();
+      const resp = await fetch("https://api.sampleapis.com/coffee/iced");
       const json = await resp.json();
+      const endTime = performance.now();
+      // คำนวณเวลาในการ fetch
+      const fetchDuration = endTime - startTime;
+      console.log(`Fetch took ${fetchDuration} milliseconds.`);
       randomCoffees(json, 5);
       setLoading(false);
       setTimeout(() => {

@@ -13,6 +13,8 @@ import {
 import { styled } from "@mui/system";
 import { AccountCircle, Settings, Language } from "@mui/icons-material";
 import React, { useState } from "react";
+import Image from "next/image";
+import logo from "../../../public/images/163996-200.png";
 
 const NavBarContainer = styled(AppBar)`
   background-color: #333;
@@ -40,13 +42,24 @@ const NavBar = () => {
 
   return (
     <NavBarContainer position="sticky">
-      <CustomToolbar>
-        <CustomBox>
-          <Typography variant="h6" component="div" sx={{ mr: 2 }}>
-            Logo
-          </Typography>
-          <MenuItem>Menu 1</MenuItem>
-          <MenuItem>Menu 2</MenuItem>
+      <CustomToolbar sx={{ p: 2 }}>
+        <CustomBox sx={{ gap: 2, pl: 2 }}>
+          <CustomBox
+            sx={{
+              width: "auto",
+            }}
+          >
+            <Box sx={{ mr: 1 }}>
+              <Image src={logo} alt="logo" height={50} width={50}></Image>
+            </Box>
+            <Box>
+              <Typography variant="h6" sx={{ mr: 2, fontFamily: "Cursive" }}>
+                Coffee Friend
+              </Typography>
+            </Box>
+          </CustomBox>
+          <MenuItem sx={{ fontFamily: "Cursive" }}>Menu 1</MenuItem>
+          <MenuItem sx={{ fontFamily: "Cursive" }}>Menu 2</MenuItem>
         </CustomBox>
         <CustomBox>
           <IconButton
